@@ -1,4 +1,4 @@
-# Project 1
+# Project 1 - SmartsyPants Book Club
 Introduction: 
 Welcome to SmartsyPants Book Club.
 
