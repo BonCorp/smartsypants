@@ -2,3 +2,5 @@ Flask
 Flask-Session
 psycopg2-binary
 SQLAlchemy
+Flask-Bcrypt
+Flask-User
