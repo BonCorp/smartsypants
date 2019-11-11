@@ -8,26 +8,48 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<nav>
-  <h1>SmartsyPants Book Club</h1>
-  <ul>
-        {% if session.user_id %}
-          <li><span>{{ session.username }}</span>
-          <li><a href="/logout">Log Out</a>
-        {% else %}
-          <li><a href="register">Register</a>
-          <li><a href="login">Log In</a>
-        {% endif %}
-      </ul>
+<div class="container">
+    <nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">SmartsyPants</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <form class="form-inline my-2 my-lg-0 mx-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Books" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <div class="navbar-collapse collapse w-300 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    {% if session.user_id %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout">Logout {{ session.username }} <span class="sr-only"></span></a>
+                        </li>
+                    {% endif %}
+                    {% if not session.user_id %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
     </nav>
-    <div class="container">
-        <section class="content">
-      {% for message in get_flashed_messages() %}
-        <div class="flash">{{ message }}</div>
-      {% endfor %}
-      {% block content %}{% endblock %}
+</div>
+<div class="container">
+    <section class="content">
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
     </section>
-    </div>
+</div>
+</div>
+
 
 
 </body>
