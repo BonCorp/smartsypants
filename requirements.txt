@@ -6,3 +6,4 @@ Flask-Bcrypt
 Flask-User
 flask-wtf
 requests
+flask-login

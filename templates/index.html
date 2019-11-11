@@ -3,4 +3,7 @@
 {% block content %}
     <h1>Welcome Name </h1>
     <p>Search For Books Below</p>
+        {% for book in my_books %}
+        <p>{{ book.title }}</p>
+    {% endfor %}
 {% endblock content %}

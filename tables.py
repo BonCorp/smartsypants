@@ -23,8 +23,8 @@ books = Table('books', metadata,
 # create user table
 users = Table('users', metadata,
               Column('id', Integer, primary_key=True),
-              Column('username', String(20), unique=True),
-              Column('password_hash', String(128))
+              Column('username', String(20), unique=True, nullable=False),
+              Column('password_hash', String(128), nullable=False)
               )
 
 reviews = Table('reviews', metadata,
@@ -35,4 +35,5 @@ reviews = Table('reviews', metadata,
                 Column('created_date', DateTime(timezone=True), server_default=func.now())
 
                 )
+
 metadata.create_all(engine)
