@@ -56,7 +56,6 @@ def login_required(view):
 
 @app.route("/")
 def index():
-    print(session.get('user_id'))
     return render_template('index.html')
 
 
@@ -113,3 +112,18 @@ def logout():
     session.clear()
     return redirect("/")
 
+
+@app.route('/search', methods=["GET"])
+def search():
+    searches = "%" + request.args.get("search_books") + "%"
+    searches = searches.title()
+    results = db.execute("SELECT isbn, title, author, year FROM books WHERE "
+                         "title LIKE :search OR "
+                         "author LIKE :search OR "
+                         "isbn LIKE :search OR "
+                         "year LIKE :search", {"search": searches}).fetchall()
+    return render_template('search.html', results=results)
+
+app.route('/book/<isbn>')
+def book(isbn):
+    render_template("book.html")
